@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: deployment
+  template:
+    metadata:
+      name: Deploy-pod
+      labels:
+        name: deployment
+    spec:
+      containers:
+      - name: container8
+        image: ubuntu
+        command: ["/bin/bash", "-c", "while true, do echo hello vinay, sleep 5, done"]
+
+
+

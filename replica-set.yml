@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myreplicaset
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - {key: DB, operator: In, values: [mysql, redis, mongodb]}
+      - {key: web, operator: NotIn, values: [nginx, apache2]}
+  template:
+    metadata:
+      name: web-db-cont
+      labels:
+        DB: redis
+    spec:
+      containers:
+      - name: co1
+        image: redis
+
+
