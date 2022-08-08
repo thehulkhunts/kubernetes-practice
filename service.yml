@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - port: 88          #container port exposed
+      targetPort: 80    #pods port
+  selector:
+    name: deployment  #here selector label finds the target named pod which has the label called deployment and matches to vip
+  type: ClusterIP    #refers the type of service called cluster ip or nodeport or elb, or endpoint
+
