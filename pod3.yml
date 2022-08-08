@@ -4,6 +4,9 @@ metadata:
   name: mywebapp3
 spec:
   containers:
+  - name: con1
+    image: ubuntu
+    command: ["bin/bash", "-c", "while true; do echo hello vinay; sleep 5; done"]
   - name: container4
     image: httpd
     ports:
