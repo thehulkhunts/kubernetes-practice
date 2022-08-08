@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap
+spec:
+  containers:
+  - name: con1
+    image: ubuntu
+    command: ["bin/bash", "-c", "while true; do echo hello vinay; sleep 5; done"]
+    volumeMounts:
+    - name: testconfigmap
+      mountPath: "/tmp/config"
+  volumes:
+  - name: testconfigmap
+    configMap:
+      name: myconfigmap
+      items:
+        - key: configuration.conf
+          path: configuration.conf
+      
+      
+  

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-configmap
+spec:
+  containers:
+  - name: con1
+    image: ubuntu
+    command: ["bin/bash", "-c", "while true; do echo hello vinay; sleep 5; done"]
+    env:
+    - name: MYENV
+      valueFrom:
+        configMapKeyRef:
+          name: myconfigmap
+          key: configuration.conf
+
