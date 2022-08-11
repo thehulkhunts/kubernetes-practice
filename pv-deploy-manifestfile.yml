@@ -18,11 +18,11 @@ spec:
         command: ["/bin/bash", "-c", "while true;do echo hello vinay; sleep 5; done"]
         volumeMounts:
           - name: my-pv
-            mounthPath: /tmp/persistent
+            mounthPath: /tmp/persistent #you have mounted a path in container with following path that should be replicated to ebs in cloud that we ca                                          lled as  pvc: pv- claim 
       volumes:
         - name: my-pv
           persistentVolumeClaim:
-            claimName: myebsvolclaim
+            claimName: pv-claim 
 
          
 
