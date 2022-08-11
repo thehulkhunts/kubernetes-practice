@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pv-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mypv
+  template:
+    metadata:
+      labels:
+        app: mypv
+    spec:
+      containers:
+      - name: my-con
+        image: ubuntu
+        command: ["/bin/bash", "-c", "while true;do echo hello vinay; sleep 5; done"]
+        volumeMounts:
+          - name: my-pv
+            mounthPath: /tmp/persistent
+      volumes:
+        - name: my-pv
+          persistentVolumeClaim:
+            claimName: myebsvolclaim
+
+         
+
+
+
