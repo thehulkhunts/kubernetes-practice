@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: under-ns-pod
+spec:
+  containers:
+  - name: con-1
+    image: nginx
