@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auto-scale
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: hpa
+  template:
+    metadata:
+      name: my-pod
+      labels:
+        name: hpa
+    spec:
+      containers:
+      - name: con1
+        image: httpd
+        ports:
+          - containerPort: 80
+        resources:
+          limits:
+            cpu: "500m"
+          requests:
+            cpu: "200m"
+
+
+    
+
