@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: con-1
+            image: ubuntu
+            command: ["/bin/bash", "-c", " while true; do echo vinay jadhav ; sleep 5; done"]
+
+
+
