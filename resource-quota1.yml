@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-quota
+spec:
+  hard:
+    limits.cpu: "100m"
+    limits.memory: "100Mi"
+
+    requests.cpu: "70m"
+    requests.memory: "70Mi"
+
+
+
