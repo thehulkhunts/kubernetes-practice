@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: parallesim-in-job
+spec:
+  parallelism: 5
+  activeDeadlineSeconds: 10
+template:
+  metadata:
+    name: parallel-pod
+  spec:
+    containers:
+    - name: con1
+      image: ubuntu
+      command: ["/bin/bash", "-c", " while true do echo; sleep 20; done"]
+
+
