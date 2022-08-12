@@ -1,5 +1,5 @@
  # here you need to know about job, like small description about it : job is kind of thing you need run once complete it should be terminated 
-apiVersion: v1
+apiVersion: batch/v1
 kind: Job
 metadata:
   name: job
