@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: v1
+spec:
+  replicas: 2
+  selectors:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+        version: v1.0.0
+    spec:
+      containers:
+      - name: container-1
+        image: nginx
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        env:
+          - name: VERSION
+            value: v1.0.0
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+       restartPolicy: Always
+       nodeSelector:
+         node: worker-1   #while performing nodeSelector, do labelling node first 
+         
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-v1
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: web
+  type: NodePort
+  
+  
+  
+
+
+       
+  
+        
+        
